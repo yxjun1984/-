@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>联系我们</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        .button {
+            display: block;
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            margin: 10px 0;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .email-text {
+            padding: 10px;
+            background: #f0f0f0;
+            border-radius: 5px;
+            margin: 10px 0;
+            word-break: break-all;
+        }
+        .copy-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        .tip {
+            color: #666;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h2>联系我们</h2>
+    
+    <div class="tip">请选择以下方式打开邮件应用：</div>
+    
+    <a href="mailto:service@aqqapet.com?subject=客户咨询&body=您好，我想咨询..." class="button">
+        打开默认邮件应用
+    </a>
+    
+    <a href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=service@aqqapet.com" class="button">
+        打开QQ邮箱
+    </a>
+    
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=service@aqqapet.com&su=客户咨询&body=您好，我想咨询..." class="button">
+        打开Gmail
+    </a>
+
+    <div class="tip">或者复制邮箱地址：</div>
+    <div class="email-text" id="emailText">service@aqqapet.com</div>
+    <button onclick="copyEmail()" class="copy-btn">复制邮箱地址</button>
+
+    <script>
+        function copyEmail() {
+            const emailText = document.getElementById('emailText').innerText;
+            navigator.clipboard.writeText(emailText).then(() => {
+                alert('邮箱地址已复制到剪贴板！');
+            }).catch(err => {
+                alert('复制失败，请手动复制');
+            });
+        }
+    </script>
+</body>
+</html>
