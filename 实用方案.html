@@ -1,53 +1,18 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>打开邮箱应用</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <title>发送邮件</title>
+</head>
+<body>
+    <h1>请点击下面的按钮来发送邮件</h1>
+    <button onclick="sendEmail()">发送邮件</button>
+
     <script>
-        function generateQRCode() {
-            var qrCodeContainer = document.getElementById("qrcode");
-            // 使用当前页面链接生成二维码，用户扫描后可以进一步操作
-            var middlePageUrl = window.location.href.split('?')[0] + "?showButton=true";
-            new QRCode(qrCodeContainer, {
-                text: middlePageUrl,
-                width: 128,
-                height: 128
-            });
-        }
-
-        function openMailApp() {
-            // 使用 JavaScript 尝试触发 mailto 链接
-            window.location.href = "mailto:service@aqqapet.com?subject=Hello&body=请在这里填写您的内容";
-        }
-
-        function handleMobileButton() {
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('showButton') === 'true') {
-                // 检测是否为移动设备，如果是则显示按钮
-                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                    document.getElementById('mobile-button').style.display = 'block';
-                }
-            }
+        function sendEmail() {
+            window.location.href = 'mailto:customer@example.com?subject=反馈&body=您好，这里是我的反馈。';
         }
     </script>
-</head>
-<body onload="generateQRCode(); handleMobileButton();">
-    <h2>扫描二维码以打开 QQ 邮箱应用</h2>
-    <div id="qrcode" style="margin-bottom: 20px;"></div>
-    <div id="mobile-button" style="display: none; margin-bottom: 20px;">
-        <button onclick="openMailApp()">点击这里以打开邮箱应用</button>
-    </div>
-    <div id="backup-links">
-        <h2>如果二维码无法打开应用，请选择以下方式打开邮箱</h2>
-        <ul>
-            <!-- 如果未安装 QQ 邮箱，则提供网页版链接 -->
-            <li><a href="https://mail.qq.com/">打开 QQ 邮箱网页版</a></li>
-
-            <!-- 其他邮箱应用 -->
-            <li><a href="mailto:service@aqqapet.com?subject=Hello&body=请在这里填写您的内容">用默认邮件应用编写邮件</a></li>
-        </ul>
-    </div>
 </body>
 </html>
